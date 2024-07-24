@@ -18,14 +18,20 @@ with col2:
 
 st.write("Below you can find some of the apps I have build in Python. Feel free to contact me!")
 
-col3, col4 = st.columns(2)
+col3, empty_col, col4 = st.columns([1.5, 0.5, 1.5])
 
 
 df = pd.read_csv("data.csv", sep=";")
 with col3:
     for index, x in df[:10].iterrows():
         st.header(x["title"])
+        st.write(x["description"])
+        st.image("images/"+ x["image"])
+        st.write(f"[Source Code]({x['url']})")
 
 with col4:
     for index, x in df[10:].iterrows():
         st.header(x["title"])
+        st.write(x["description"])
+        st.image("images/" + x["image"])
+        st.write(f"[Source Code]({x['url']})")
